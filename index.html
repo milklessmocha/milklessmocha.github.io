@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hayk Gevorgyan</title>
+<meta name="description" content="Hayk Gevorgyan, full-stack engineer in Yerevan. TypeScript, React, Node.js, GraphQL.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2315100c'/><text x='16' y='23' text-anchor='middle' font-family='Helvetica,Arial' font-weight='700' font-size='19' fill='%23d4a373'>H</text></svg>">
+<style>
+  :root {
+    --bg: #f4eee6; --card: #ece4d8; --ink: #2b1d14; --sub: #6b5645; --acc: #a0673a; --line: #d9ccbb;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15100c; --card: #1e1712; --ink: #f1e8dc; --sub: #b8a491; --acc: #d4a373; --line: #3a2e24; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 var(--sans); }
+  a { color: var(--acc); text-underline-offset: 3px; }
+  code { font: .9em var(--mono); }
+
+  #v { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1;
+    --fade: linear-gradient(to right, #000, rgba(0,0,0,.2) calc(50% - 360px), rgba(0,0,0,.2) calc(50% + 360px), #000);
+    -webkit-mask-image: var(--fade); mask-image: var(--fade); }
+  .hero .wrap { padding-top: 110px; padding-bottom: 50px; }
+  h1 { font-size: clamp(40px, 8vw, 68px); line-height: 1.05; letter-spacing: -1.5px; margin: 0; }
+  .tag { font: 16px var(--mono); color: var(--sub); margin: 14px 0 0; }
+  .links { margin-top: 26px; font: 15px var(--mono); display: flex; gap: 22px; flex-wrap: wrap; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0 8px; }
+  h2 { font: 600 13px var(--mono); text-transform: uppercase; letter-spacing: 2px; color: var(--acc); margin: 0 0 22px; }
+  .intro { font-size: 20px; line-height: 1.55; }
+
+  .project { background: color-mix(in srgb, var(--card) 88%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px; margin-bottom: 20px; }
+  .project h3 { margin: 0; font-size: 22px; }
+  .project .meta { font: 14px var(--mono); color: var(--sub); margin: 4px 0 14px; }
+  .project ul { margin: 0; padding-left: 18px; }
+  .project li { margin-bottom: 8px; }
+  .project li b { color: var(--ink); }
+  .project p { margin: 0 0 10px; }
+  .paper { font-size: 15px; color: var(--sub); border-left: 2px solid var(--acc); padding-left: 12px; margin-top: 14px !important; }
+
+  .skills { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; }
+  .skills dt { font: 14px var(--mono); color: var(--sub); padding-top: 2px; }
+  .skills dd { margin: 0; }
+
+  footer { padding: 56px 0 70px; color: var(--sub); font-size: 15px; }
+
+  @media (max-width: 600px) {
+    #v { opacity: .35; -webkit-mask-image: none; mask-image: none; }
+    .hero .wrap { padding-top: 70px; padding-bottom: 60px; }
+    .project { padding: 20px; }
+    .skills { grid-template-columns: 1fr; gap: 2px; }
+    .skills dd { margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="v" aria-hidden="true"></canvas>
+<header class="hero">
+  <div class="wrap">
+    <h1>Hayk Gevorgyan</h1>
+    <p class="tag">full-stack engineer · TypeScript · Yerevan</p>
+    <nav class="links">
+      <a href="https://github.com/milklessmocha">GitHub</a>
+      <a href="https://www.linkedin.com/in/haykgevorgian">LinkedIn</a>
+      <a href="mailto:g.hayk.111@gmail.com">Email</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <p class="intro">I write TypeScript on both ends (React, Node.js, GraphQL) and build my own projects on the side. Most of those repos are private, so this page describes them instead.</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <article class="project">
+      <h3>Banman</h3>
+      <p class="meta">multi-tenant issue tracker · in progress · React 19, GraphQL Yoga, PostgreSQL, Drizzle, Vitest</p>
+      <ul>
+        <li><b>Schema-driven backend.</b> One JSON definition per table generates the database table, its GraphQL API and its access rules. The server refuses to boot if a table has no permission policy.</li>
+        <li><b>Permission language.</b> Policies are written in a small expression language. The same policy is checked in memory on writes and compiled into a SQL <code>WHERE</code> on reads, so rows you can't see are filtered out instead of raising errors.</li>
+        <li><b>Tenant isolation.</b> Company and space scopes are enforced across queries, mutations and live subscriptions, and covered by about 300 integration tests that run a real server against a real Postgres database.</li>
+        <li><b>How it's built.</b> The code is written by Claude Code agents. I set the architecture and specs, review every change, and require verification before anything merges.</li>
+      </ul>
+    </article>
+
+    <article class="project">
+      <h3>Droplet</h3>
+      <p class="meta">website for an image-watermarking API · Jul to Aug 2026 · React 19, TypeScript, Vite</p>
+      <p>A landing page, API docs and a live demo that watermarks an uploaded image and detects watermarks.</p>
+      <p>Every page, section and tab comes from one JSON-shaped config mapped to components. The UI uses a small component library built on design tokens, and two custom ESLint rules keep pages from going around it.</p>
+      <p class="paper">Related paper I co-authored: <i>Robust Blind Zero-Bit Image Watermark Detection Using Structured Hard-Negative Learning</i> (D. Hovhannisyan, H. Gevorgyan, D. Faruk), submitted to Acadlore Transactions on AI and Machine Learning, 2026.</p>
+    </article>
+
+    <article class="project">
+      <h3>Football tactical analysis</h3>
+      <p class="meta">Master's project · Python, YOLO, OpenCV</p>
+      <p>YOLO player and ball detection, an OpenCV homography onto a 2D pitch, and Voronoi plots of pitch control. The background of this page is a Voronoi diagram too, and your pointer is one of its seeds.</p>
+    </article>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <p>I came to programming through math. I went to a specialized math and physics school, competed in national olympiads in math, physics and chemistry, and hold a Bachelor's degree in Applied Mathematics and a Master's degree in Computer Science from the National Polytechnic University of Armenia. Algorithms were my strongest area in Picsart Academy's Java program.</p>
+    <p>At work I build features for a mortgage CRM with React, Node.js, GraphQL and MongoDB.</p>
+    <p>I'm open to full-stack roles, remote or in Yerevan.</p>
+  </section>
+
+  <section>
+    <h2>Tools</h2>
+    <dl class="skills">
+      <dt>daily</dt><dd>TypeScript, JavaScript, React, Apollo Client, Vite, Node.js, GraphQL, REST, MongoDB</dd>
+      <dt>working knowledge</dt><dd>PostgreSQL, WebSockets, AWS S3, Java, SQL</dd>
+      <dt>certificates</dt><dd>Claude Code 101 (Anthropic, 2026) · Java Developer Sandbox Program (Picsart Academy)</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <a href="mailto:g.hayk.111@gmail.com">g.hayk.111@gmail.com</a> · <a href="https://www.linkedin.com/in/haykgevorgian">LinkedIn</a> · <a href="https://github.com/milklessmocha">GitHub</a>
+  </footer>
+</main>
+
+<script>
+// Live Voronoi background: seeds drift, the pointer is an extra seed whose cell is filled.
+const cv = document.getElementById('v'), ctx = cv.getContext('2d');
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W, H, seeds = [], pointer = null;
+
+function resize() {
+  const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+  for (const s of seeds) { s.x *= r.width / W; s.y *= r.height / H; }
+  W = r.width; H = r.height; cv.width = W * d; cv.height = H * d;
+  ctx.setTransform(d, 0, 0, d, 0, 0);
+  if (!seeds.length) seeds = Array.from({ length: Math.min(60, Math.round(W * H / 22000) + 8) }, () => ({
+    x: Math.random() * W, y: Math.random() * H,
+    vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 }));
+}
+
+// Cell of p: the box, clipped by the half-plane closer to p for every other seed.
+function cell(p, all) {
+  let poly = [[0, 0], [W, 0], [W, H], [0, H]];
+  for (const q of all) {
+    if (q === p || !poly.length) continue;
+    const mx = (p.x + q.x) / 2, my = (p.y + q.y) / 2, dx = q.x - p.x, dy = q.y - p.y;
+    const f = v => (v[0] - mx) * dx + (v[1] - my) * dy, out = [];
+    poly.forEach((a, i) => {
+      const b = poly[(i + 1) % poly.length], fa = f(a), fb = f(b);
+      if (fa <= 0) out.push(a);
+      if ((fa < 0) !== (fb < 0) && fa !== fb) { const t = fa / (fa - fb); out.push([a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])]); }
+    });
+    poly = out;
+  }
+  return poly;
+}
+
+function draw() {
+  const acc = getComputedStyle(document.documentElement).getPropertyValue('--acc').trim();
+  const all = pointer ? [...seeds, pointer] : seeds;
+  ctx.clearRect(0, 0, W, H);
+  for (const p of all) {
+    const poly = cell(p, all);
+    if (!poly.length) continue;
+    ctx.beginPath(); poly.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
+    if (p === pointer) { ctx.globalAlpha = .22; ctx.fillStyle = acc; ctx.fill(); }
+    ctx.globalAlpha = .5; ctx.strokeStyle = acc; ctx.lineWidth = 1; ctx.stroke();
+    ctx.globalAlpha = .8; ctx.fillStyle = acc; ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, 7); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
+function tick() {
+  for (const s of seeds) {
+    s.x += s.vx; s.y += s.vy;
+    if (s.x < -20 || s.x > W + 20) s.vx *= -1;
+    if (s.y < -20 || s.y > H + 20) s.vy *= -1;
+  }
+  draw(); requestAnimationFrame(tick);
+}
+
+addEventListener('pointermove', e => { pointer = { x: e.clientX, y: e.clientY }; if (still) draw(); });
+document.addEventListener('pointerleave', () => { pointer = null; if (still) draw(); });
+addEventListener('resize', () => { resize(); draw(); });
+resize();
+still ? draw() : tick();
+</script>
+</body>
+</html>
